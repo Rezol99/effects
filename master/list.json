@@ -4,17 +4,84 @@
             "type": "basic",
             "id": "move_image",
             "name": "Move Image",
-            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/move_image.py"
+            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/move_image.py",
+            "components": [
+                {
+                    "id": "move_image_x",
+                    "type": "slider",
+                    "label": "X",
+                    "key": "x",
+                    "value": 0,
+                    "min": -300,
+                    "max": 300,
+                    "step": 1
+                },
+                {
+                    "id": "move_image_y",
+                    "type": "slider",
+                    "label": "Y",
+                    "key": "y",
+                    "value": 0,
+                    "min": -300,
+                    "max": 300,
+                    "step": 1
+                }
+            ]
         },{
             "type": "basic",
             "id": "rotate_image",
             "name": "Rotate Image",
-            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/rotate_image.py"
+            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/rotate_image.py",
+            "components": [
+                {
+                    "id": "rotate_image_angle_x",
+                    "type": "slider",
+                    "label": "X",
+                    "key": "x",
+                    "value": 0,
+                    "min": -180,
+                    "max": 180,
+                    "step": 1
+                },
+                {
+                    "id": "rotate_image_angle_y",
+                    "type": "slider",
+                    "label": "Y",
+                    "key": "y",
+                    "value": 0,
+                    "min": -180,
+                    "max": 180,
+                    "step": 1
+                },
+                {
+                    "id": "rotate_image_angle_z",
+                    "type": "slider",
+                    "label": "Z",
+                    "key": "z",
+                    "value": 0,
+                    "min": -180,
+                    "max": 180,
+                    "step": 1
+                }
+
+            ]
         }, {
             "type": "basic",
             "id": "blur_image",
             "name": "Blur Image",
-            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/blur_image.py"
+            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/blur_image.py",
+            "components": [
+                {
+                    "id": "blur_image_amount",
+                    "type": "slider",
+                    "label": "Amount",
+                    "key": "amount",
+                    "value": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 1
+                }
+            ]
         }
     ]
 }
