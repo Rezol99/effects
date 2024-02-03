@@ -2,8 +2,8 @@
     "effects": [
         {
             "type": "basic",
-            "id": "move_effect",
-            "name": "Move Effect",
+            "id": "move_image",
+            "name": "Move Image",
             "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/move_image.py"
         },{
             "type": "basic",
