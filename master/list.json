@@ -10,6 +10,11 @@
             "id": "rotate_image",
             "name": "Rotate Image",
             "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/rotate_image.py"
+        }, {
+            "type": "basic",
+            "id": "blur_image",
+            "name": "Blur Image",
+            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/blur_image.py"
         }
     ]
 }
