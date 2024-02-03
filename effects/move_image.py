@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 
 def execute(image: np.ndarray, params: dict) -> np.ndarray:
     """
