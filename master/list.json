@@ -5,6 +5,11 @@
             "id": "move_effect",
             "name": "Move Effect",
             "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/move_image.py"
+        },{
+            "type": "basic",
+            "id": "rotate_image",
+            "name": "Rotate Image",
+            "url": "https://raw.githubusercontent.com/Rezol99/effects/main/effects/rotate_image.py"
         }
     ]
 }
