@@ -1,6 +1,6 @@
 import numpy as np
 
-def move_image(image: np.ndarray, params: dict) -> np.ndarray:
+def execute(image: np.ndarray, params: dict) -> np.ndarray:
     """
     画像を移動させる
     [in]  image: 画像

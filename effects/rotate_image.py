@@ -1,24 +1,24 @@
 import numpy as np
 import cv2
 
-# TODO: type ignoreをなくす
 
-def _rotate_image_x(mat: np.ndarray, angle: float) -> np.ndarray:
+def execute(mat: np.ndarray, angle: float) -> np.ndarray:
     rotation_vector = np.array([angle, 0, 0])
-    R, _ = cv2.Rodrigues(rotation_vector) # type: ignore
+    R, _ = cv2.Rodrigues(rotation_vector)  # type: ignore
     return np.dot(mat, R)
 
 
 def _rotate_image_y(mat: np.ndarray, angle: float) -> np.ndarray:
     rotation_vector = np.array([0, angle, 0])
-    R, _ = cv2.Rodrigues(rotation_vector) # type: ignore
+    R, _ = cv2.Rodrigues(rotation_vector)  # type: ignore
     return np.dot(mat, R)
 
 
 def _rotate_image_z(mat: np.ndarray, angle: float) -> np.ndarray:
     rotation_vector = np.array([0, 0, angle])
-    R, _ = cv2.Rodrigues(rotation_vector) # type: ignore
+    R, _ = cv2.Rodrigues(rotation_vector)  # type: ignore
     return np.dot(mat, R)
+
 
 def rotate_image_xyz(image: np.ndarray, params: dict) -> np.ndarray:
     angle_x = params.get("x", 0)
@@ -32,7 +32,7 @@ def rotate_image_xyz(image: np.ndarray, params: dict) -> np.ndarray:
 
     # 回転行列を計算
     mat = np.eye(3)
-    mat = _rotate_image_x(mat, angle_x)
+    mat = execute(mat, angle_x)
     mat = _rotate_image_y(mat, angle_y)
     mat = _rotate_image_z(mat, angle_z)
 
@@ -45,24 +45,24 @@ def rotate_image_xyz(image: np.ndarray, params: dict) -> np.ndarray:
     mat = mat[:2, :]
 
     if image.shape[2] < 4:  # RGB画像の場合
-        out_img = cv2.warpAffine(image, mat, (width, height)) # type: ignore
+        out_img = cv2.warpAffine(image, mat, (width, height))  # type: ignore
     else:  # アルファチャンネルを含む画像の場合
         img = image
         alpha_channel = img[:, :, 3]
         rgb_channels = img[:, :, :3]
 
         # RGBチャンネルだけで変換を計算
-        planar_img = cv2.merge( # type: ignore
+        planar_img = cv2.merge(  # type: ignore
             [rgb_channels[:, :, 0], rgb_channels[:, :, 1], rgb_channels[:, :, 2]]
         )
-        rotated_img = cv2.warpAffine(planar_img, mat, (width, height)) # type: ignore
+        rotated_img = cv2.warpAffine(planar_img, mat, (width, height))  # type: ignore
 
         # アルファチャンネルだけで変換を計算
-        alpha_img = cv2.merge([alpha_channel, alpha_channel, alpha_channel]) # type: ignore
-        rotated_alpha = cv2.warpAffine(alpha_img, mat, (width, height)) # type: ignore
+        alpha_img = cv2.merge([alpha_channel, alpha_channel, alpha_channel])  # type: ignore
+        rotated_alpha = cv2.warpAffine(alpha_img, mat, (width, height))  # type: ignore
 
         # RGBチャンネルとアルファチャネルをマージ
-        out_img = cv2.merge( # type: ignore
+        out_img = cv2.merge(  # type: ignore
             [
                 rotated_img[:, :, 0],
                 rotated_img[:, :, 1],
