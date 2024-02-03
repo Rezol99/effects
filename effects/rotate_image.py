@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 
-def execute(mat: np.ndarray, angle: float) -> np.ndarray:
+def _rotate_image_x(mat: np.ndarray, angle: float) -> np.ndarray:
     rotation_vector = np.array([angle, 0, 0])
     R, _ = cv2.Rodrigues(rotation_vector)  # type: ignore
     return np.dot(mat, R)
@@ -20,7 +20,7 @@ def _rotate_image_z(mat: np.ndarray, angle: float) -> np.ndarray:
     return np.dot(mat, R)
 
 
-def rotate_image_xyz(image: np.ndarray, params: dict) -> np.ndarray:
+def execute(image: np.ndarray, params: dict) -> np.ndarray:
     angle_x = params.get("x", 0)
     angle_y = params.get("y", 0)
     angle_z = params.get("z", 0)
@@ -32,7 +32,7 @@ def rotate_image_xyz(image: np.ndarray, params: dict) -> np.ndarray:
 
     # 回転行列を計算
     mat = np.eye(3)
-    mat = execute(mat, angle_x)
+    mat = _rotate_image_x(mat, angle_x)
     mat = _rotate_image_y(mat, angle_y)
     mat = _rotate_image_z(mat, angle_z)
 
